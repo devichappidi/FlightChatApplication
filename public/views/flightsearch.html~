@@ -1,0 +1,196 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true // 100% fit in a container
+        });
+    });
+</script>
+<div class="col-md-8 banner-right">
+    <div class="sap_tabs">
+        <div class="booking-info">
+            <h2>Search Domestic & International Flight Tickets</h2>
+        </div>
+        <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+            <ul class="resp-tabs-list">
+                <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Search Flights</span></li>
+                <div class="clearfix"></div>
+            </ul>
+            <!---->
+            <div class="resp-tabs-container">
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                    <div class="facts">
+                        <div class="booking-form">
+
+                            <div class="online_reservation">
+                                <div class="b_room">
+                                    <div class="booking_room">
+                                        <div class="reservation">
+                                            <ul>
+                                                <li class="span1_of_1 desti">
+                                                    <h5>Flying from</h5>
+                                                    <div class="book_date">
+                                                        <form>
+                                                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                                            <input type="text" placeholder="Type Departure City" class="typeahead1 input-md form-control tt-input" required="" ng-click="getCity()" data-toggle="modal" data-target="#myModal" ng-model="fromcity">
+                                                        </form>
+                                                    </div>
+                                                </li>
+                                                <li class="span1_of_1 left desti">
+                                                    <h5>Flying to</h5>
+                                                    <div class="book_date">
+                                                        <form>
+                                                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                                            <input type="text" placeholder="Type Destination City" class="typeahead1 input-md form-control tt-input" required="" ng-click="getCity1()" data-toggle="modal" data-target="#myModal1" ng-model="tocity">
+                                                        </form>
+                                                    </div>
+                                                </li>
+                                                <div class="clearfix"></div>
+                                            </ul>
+                                        </div>
+
+                                        <div class="reservation">
+                                            <ul>
+                                                <li class="span1_of_3">
+                                                    <div class="date_btn">
+                                                        <form>
+                                                            <input type="submit" value="Search" ng-click="serachFlight()" ng-disabled="!fromcity||!tocity" />
+                                                        </form>
+                                                    </div>
+                                                </li>
+                                                <div class="clearfix"></div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="choose">
+						<div class="choose-info">
+							<h4>Why Choose Us</h4>
+						</div>
+						<div class="choose-grids">
+							<div class="choose-grids-info">
+								<div class="choose-left">
+									<h5>09</h5>
+									<span>Million</span>
+								</div>
+								<div class="choose-right">
+									<a href="products.html">Aliquam faucibus vehicula vulputate</a>
+									<p>Maecenas euismod tortor a tristique convallis diam eros aliquam.</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="choose-grids-info">
+								<div class="choose-left">
+									<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+								</div>
+								<div class="choose-right">
+									<a href="products.html">Sed tincidunt consectetur augue</a>
+									<p>Nulla bibendum libero in nunc eleifend tincidunt. Aliquam quis molestie lectus</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="choose-grids-info">
+								<div class="choose-left">
+									<h6>$</h6>
+								</div>
+								<div class="choose-right">
+									<a href="products.html">Nullam et arcu interdum, accumsan justo</a>
+									<p>Maecenas dapibus eu purus vel imperdiet. Maecenas cursus, arcu sed tempus </p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+					</div>
+<div class="clearfix"> </div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cities& Airports</h4>
+                <input type="text" ng-model="city1" placeholder="search here" style="color:black;border:1px solid black;padding:2px">
+            </div>
+            <div class="modal-body" style="height:450px;overflow:auto;">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="name in airports | orderBy: 'city'|filter:city1" ng-click="fromcityname(name)" data-dismiss="modal" ng-if="name.city"><i class="fa fa-plane" aria-hidden="true"></i> city:
+                        <span ng-bind="name.city" style="color:black"></span>
+                        <br> aiport name:<span style="color:red" ng-bind="name.name"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">cities and airports</h4>
+                <input type="text" ng-model="city2" placeholder="search here" style="color:black;border:1px solid black;padding:2px">
+            </div>
+            <div class="modal-body" style="height:450px;overflow:auto;">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="name1 in airports1 | orderBy: 'city'|filter:city2" ng-click="tocityname(name1)" data-dismiss="modal" style="border:1px solid black" ng-if="name1.city"><i class="fa fa-plane" aria-hidden="true"></i> city:
+                        <span ng-bind="name1.city" style="color:blue"></span>
+                        <br> aiport name:<span style="color:red" ng-bind="name1.name"></span>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<script type="application/x-javascript">
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true // 100% fit in a container
+        });
+    });
+</script>
+<script type="text/javascript">
+    //        $(function () { // SyntaxHighlighter.all(); // });
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+</script>-->

@@ -1,0 +1,148 @@
+<div style="position:fixed;width:100%;margin-top:60px">
+    <div class="row">
+        <div class="col-sm-4" id="leftsidebar" style="padding-right:2px;;">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 align="center">Participants</h4>
+                </div>
+                <div class="panel-body" ng-style="{height:screenHeight + 'px'}">
+                    <ul class="list-group">
+                        <li style="list-style-type:none">
+                            <div ng-if="user.id == fbId" ng-repeat="user in userList" class="list-group-item" style="cursor:pointer;height:70px">
+                                <span ng-click="userInfo(user)">
+                                  <span > 
+                                      <img ng-src = "{{user.image}}" style = "float:left" class = "img-circle">
+                                   </span>
+                                <span style="color:black;font-size:16px;" class="text-center">            {{user.firstname}}</span>
+                                <span style="color:black;font-size:16px;">{{user.lastname}}</span>
+                                </span>
+                            </div>
+                            <div class="list-group-item" style="cursor:pointer;height:70px" ng-repeat="user in userList" ng-if="user.id != fbId" class="col-sm-12 col-xs-12">
+                                <span ng-click="userInfo(user)">
+                                   <span>
+                                      <img ng-src = "{{user.image}}" style = "float:left" class = "img-circle">
+                                  </span>
+                                <span style="color:black;font-size:16px" id="uname">{{ user.firstname}}</span>
+                                <span style="color:black;font-size:16px">{{ user.lastname}}</span>
+                                </span>
+
+
+                                <button class="btn btn-primary btn-sm  col-sm-2 col-xs-2" style="float:right;cursor:pointer" id="ubtn" ng-click="memname(user)"> chat</button>
+                                <span style="float:right;padding-left:1%;font-size:13px" class="col-sm-2 col-xs-2">{{user.status }}</span>
+                                <!--<span id="status" style="float:right"></span>-->
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="panel-body" id="scrl1" ng-hide="group">
+                        <b>Group name: </b>
+                        <span id="list" ng-click="memname()"></span>
+                    </div>
+                </div>
+
+                <!--
+
+                <div class="panel-footer">
+                    
+                </div>
+-->
+                <!--                <span style="font-size:30px;cursor:pointer;float:right;" id="sideShow" ng-click="sideOpenNav()"><i class="fa fa-bars" aria-hidden="true"  ng-click="open()"></i> </span>-->
+            </div>
+        </div>
+        <!--..........Responsive sidenav.............--->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" ng-click="sideCloseNav()">&times;</a>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 align="center">Participants</h4>
+                    </div>
+                    <div class="panel-body" ng-style="{height:screenHeight + 'px'}">
+                        <ul class="list-group">
+                            <li style="list-style-type:none">
+                                <div ng-if="user.id == fbId" ng-repeat="user in userList" class="list-group-item" style="cursor:pointer;height:70px">
+                                    <span ng-click="userInfo(user)" class="col-sm-12 col-xs-12">
+                                        <span class = "col-md-4 col-sm-4 col-xs-4">
+                                            <img ng-src = "{{user.image}}" style = "float:left" class = "img-circle"></span>
+                                    <span style="color:black;font-size:16px;" class="text-center col-md-4 col-sm-8 col-xs-8">{{user.firstname}}</span>
+                                    <span class="col-md-4 col-sm-8 col-xs-8">{{user.lastname}}</span>
+                                    </span>
+                                </div>
+                                <div class="list-group-item" style="cursor:pointer;height:70px" ng-repeat="user in userList" ng-if="user.id != fbId">
+                                    <!--<span id="img" style="float:left"></span>
+                            <span id="name"></span><span id="status" style="float:right"></span>
+-->
+                                    <span ng-click="userInfo(user)"><span><img ng-src = "{{user.image}}" style = "float:left" class = "img-circle"></span>
+                                    <span style="color:black;font-size:16px">{{user.firstname}}{{user.lastname}}</span></span>
+
+
+                                    <button ng-click="memname(user);sideCloseNav()" class="btn btn-primary btn-sm" style="float:right" id="ubtn">chat</button><span style="float:right">{{user.status}}</span>
+                                    <!--<span id="status" style="float:right"></span>-->
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="panel-body" id="scrl1" style="cursor:pointer">
+                            <ul id="list"></ul>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <!--............close......---->
+        <!--        <div class=".space"></div>-->
+        <div class="col-sm-8" id="div1" style="padding-left:0px">
+            <div class="panel panel-primary">
+                <div class="panel-heading chatWidth">
+                    <h5 id="frndName">{{grpName}}</h5>
+                    <span style="font-size:16px;cursor:pointer;float:right;color:white;margin-top:-20px" id="sideShow" ng-click="sideOpenNav()">&#9776;</span>
+                    <span id="typing" style="float:left;color:white;margin-top:-10px"></span>
+                </div>
+                <div class="panel-body" id="scrl2" ng-style="{height:screenHeight-140 + 'px'}" style="background-image:url('images/paper2.jpg');overflow:scroll-y;overflow-x:hidden;width:100%">
+                    <!--                    <p id="loading">Loading.....</p>-->
+                    <!--
+                    <p id="noChat">No More Chats To Display.....</p>
+<p id="initMsg">!!...Click On User Or Group Button To Start Chat...!!</p>-->
+                    <p align="center" ng-hide="welcomePg" style="font-size:30px;padding-top:80px">Welcome to Flightchat!!
+                        <br><span>Click on group button to start group chat</span></p>
+                    <!--                  <ul id="messages"></ul>-->
+                    <div class="chat" id="empty">
+                        <section class="module">
+                            <ol class="discussion" ng-repeat="message in arrData" id="chatdata">
+                                <li ng-class="message.msgFrom == user?'self':'other'">
+                                    <div class="messages" name="msgs" ng-style="message.msgFrom == user?{'background-color':'dodgerblue','border-radius':'10px 10px 0px 10px' }:{'background-color':'#fff','border-radius':'10px 10px 10px 0px'}" style="bottom:40px">
+                                        <p class="paratext" id="messages" ng-style="message.msgFrom == user?{'background-color':'dodgerblue','color':'#fff','border-radius':'10px 10px 0px 10px'}:{'background-color':'#fff','border-radius':'10px 10px 10px 0px'}">
+                                            <span name="msgs" style="font-weight:600" ng-bind="message.msgFrom"></span>
+
+                                            <!--                                            <a class="glyphicon glyphicon-trash btn-sm" style="float:right;text-decoration:none" ng-click="singleMsgDel(message._id,$index)" ng-style="message.msgFrom == fbId?{'background-color':'teal','color':'#fff'}:{'background-color':'#f0f0f0'}"></a>-->
+                                            <br><span name="msgs" id="userMsg" ng-bind="(message.msg)" style="padding-left:2%"></span>&nbsp;
+                                            <span name="msgs" ng-if="message.date==undefined" ng-bind="message.createdOn" style="float:right;font-size:10px"></span>
+                                            <span name="msgs" ng-if="message.createdOn==undefined" ng-bind="message.date" style="float:right;font-size:10px"></span>
+
+                                        </p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </section>
+                    </div>
+
+                </div>
+                <div class="panel-footer chatWidth">
+
+                    <form id="chatForm" action="" onsubmit="return false" style="margin-top:10px" id="inputBox">
+                        <div class="input-group">
+                            <textarea id="myMsg" ng-keyup="do_resize(this);" cols="20" rows="1" name="description_name" class=" form-control" ng-model="message" style="display:inline-block;resize:none" placeholder="Write Message Here.." />
+                            <div class="input-group-btn">
+                                <button type="submit" id="sendBtn" class=" btn btn-primary " ng-disabled="!message" name="btn" style="font-size:14px;text-align:left;">send</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container chatClass userimg" style="position:fixed;width:100%;margin-top:60px;background-color:white;">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" style="height:50%;">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" align="center">PROFILE</div>
+                <div class="panel-body col-md-12 col-sm-12 col-xs-12" ng-style="{height:screenHeight -113+ 'px'}">
+                    <div class="container col-md-12 col-sm-12 col-xs-12" align="center">
+                        <img ng-src='{{userData.image}}' class="img-circle" alt="userimg" width="70" height="70">
+
+                    </div>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <table>
+                            <tr>
+                                <td>First name </td>
+                                <td></td>
+                                <td align="center">:</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ userData.firstname}}</td>
+
+                            </tr>
+                            <tr>
+                                <td>Last name</td>
+                                <td></td>
+                                <td style="text-align:center">:</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ userData.lastname}}</td>
+
+                            </tr>
+                            <tr>
+                                <td>Fb id</td>
+                                <td></td>
+                                <td style="text-align:center">:</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ userData.id}}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-md-12" ng-if=" userData.id !=fbId">
+
+                        <div class="col-md-2">About:</div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8" ng-if="userData.aboutme">{{userData.aboutme}}</div>
+                        <div class="col-md-8" ng-if="!userData.aboutme">It's me..</div>
+                    </div>
+                    <div class="col-md-12" ng-if=" userData.id ==fbId">
+                        <div class="col-md-2">About:</div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8" id="abt">{{userData.aboutme}}</div>
+                    </div>
+                    <div class="col-md-12" ng-if="userData.id ==fbId">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <button class="btn btn-primary" ng-click="showText()" id="adbtnn">Add</button>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" ng-hide="data" ng-if="userData.id ==fbId">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <textarea rows="4" cols="25" id="data" ng-model="area" style="border:1px solid black;padding:2%"></textarea>
+                            <br>
+                            <button class="btn btn-primary" ng-click="save()" ng-disabled="!area">save</button>
+                            <button class="btn btn-danger" ng-click="cancel()">cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

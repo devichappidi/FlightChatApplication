@@ -1,0 +1,106 @@
+<div class="chooseFlight" data-spy="affix" data-offset-top="197" style="z-index:1">
+    <h4>Flight Search Results</h4>
+    <span class="pull-right" style="font-size:10px;margin-top:-15px">
+    <span ng-click="back()" style="cursor:pointer">HOME</span>
+    <span style="color:orange">/ FLIGHT SEARCH RESULTS</span></span>
+</div>
+<div style="width:100%;" ng-style="{height:ht+'px'}" class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+
+    <div class="col-md-4 col-sm-12 col-lg-3" style="padding-top:3em">
+        <img src="images/3.jpg" alt="image" height="500" width="300">
+    </div>
+    <div class="col-md-8 col-sm-12 col-xs-12 col-lg-9 fullWidth" style="padding-top:3em;">
+        <div class="searchFlight sortClass">
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <div class="right-inner-addon">
+                    <i class="icon-search glyphicon glyphicon-search"></i>
+                    <input type="search" class="form-control" placeholder="Search here" ng-model="city" />
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-12 col-sm-12 col-xs-12" ng-repeat="grp in indGrp|filter:city" ng-click="chatPg(grp)" style="cursor:pointer">
+            <div class="choose-grids">
+                <div class="col-md-2 col-sm-0 col-xs-0">
+                    <div style="margin-top:0.5em">
+                        <img src="images/flight.png" alt="flight" width="70" height="80" class="image1" style="margin-left:30px" />
+                    </div>
+                </div>
+                <div class=" col-md-10 col-sm-12 col-xs-12 ">
+                    <div class="col-md-12 col-sm-12 borderClass " style="border-bottom:1px solid lightgrey ">
+                        <div class="col-md-10 col-sm-6 col-xs-6 ">
+                            <span style="font-size:16px;color:skincolor "><b>{{grp.origincode}} to {{grp.destinationcode}}</b></span>
+                            <br>
+                            <span style="font-size:12px;color:grey">{{grp.origincity}} to {{grp.destinationcity}}</span>
+                        </div>
+                        <div class="col-md-2 col-sm-6 col-xs-6 ">
+                            <span style="font-size:13px">PRICE</span>
+                            <br> <span style="color:darkorange;font-size:18px"><b>{{grp.price}}</b></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="col-md-10 col-sm-6 col-xs-12 ">
+                            <div class="col-md-4 borderClass" style="border-right:1px solid lightgrey;padding:10px; "><img src="images/takeoff.jpg " alt="takeoff " width="18 " height="18 "><span style="color:#51BCF5;font-size:10px">TAKE OFF</span>
+                                <br>
+                                <span style="font-size:12px;padding-left:18px;color:grey">{{grp.arrivaltime}}</span></div>
+                            <div class="col-md-4 borderClass" style="border-right:1px solid lightgrey;padding:10px;"><img src="images/landing.png " alt="takeoff " width="18 " height="18 "><span style="color:#51BCF5;font-size:10px ">LANDING</span>
+                                <br>
+                                <span style="font-size:12px;padding-left:18px;color:grey">{{grp.departuretime}}</span></div>
+                            <div class="col-md-4 borderClass" style="border-right:1px solid lightgrey;padding:10px"><span class="glyphicon glyphicon-time " style="font-size:12px; "><span style="color:#51BCF5;font-size:10px ">TOTALTIME</span></span>
+                                <br>
+                                <span style="font-size:12px;padding-left:18px;color:grey">{{(grp.duration
+                                            < '60') ? (grp.duration) + 'm' : (grp.duration%60==0) ? (grp.duration-grp.duration%60)/60 + 'h' : ((grp.duration-grp.duration%60)/60 + 'h' + ' ' + grp.duration%60 + 'm')}}</span></div>
+
+                        </div>
+                        <div class="col-md-2 col-sm-6 col-xs-12 ">
+                            <br>
+                            <span style="margin-top:50px "><button class="btn btnStyle" ng-click="joinTheGrp(flight,$index) " style="cursor:pointer;color:white;font-size:13px;background-color:#90BE0A ">CHAT</button></span></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 " ng-repeat="flight in flightsList|filter:city ">
+            <div class="choose-grids ">
+                <div class="col-md-2 col-sm-0 col-xs-0 ">
+                    <div style="margin-top:0.5em ">
+                        <img src="images/flight.png " alt="flight " width="70 " height="80 " class="image1 " style="margin-left:30px " />
+                    </div>
+                </div>
+                <div class="col-md-10 col-sm-12 col-xs-12 ">
+                    <div class="col-md-12 col-sm-12 respClass " style="border-bottom:1px solid lightgrey ">
+                        <div class="col-md-10 col-sm-6 col-xs-6 ">
+                            <span style="font-size:14px "><b>{{flight.origin}} to {{flight.destination}}</b></span>
+                            <br>
+                            <span style="font-size:10px;color:lightgrey">{{originCity}} to {{destinationCity}}</span>
+                        </div>
+                        <div class="col-md-2 col-sm-6 col-xs-6 ">
+                            <span style="font-size:14px "><b>Price</b></span>
+                            <br> <span style="color:darkorange"><b>{{flight.saletotal}}</b></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="col-md-10 col-sm-6 col-xs-6 ">
+                            <div class="col-md-4 " style="border-right:1px solid lightgrey;padding:10px; "><img src="images/takeoff.jpg " alt="takeoff " width="18 " height="18 "><span style="color:dodgerblue;font-size:10px ">TAKE OFF</span>
+                                <br>
+                                <span style="font-size:12px;padding-left:18px;color:light-grey">{{flight.arrivaltime}}</span></div>
+                            <div class="col-md-4 " style="border-right:1px solid lightgrey;padding:10px; "><img src="images/landing.png " alt="takeoff " width="18 " height="18 "><span style="color:dodgerblue;font-size:10px ">LANDING</span>
+                                <br>
+                                <span style="font-size:12px;padding-left:18px;color:lightgrey">{{flight.departuretime}}</span></div>
+                            <div class="col-md-4 " style="border-right:1px solid lightgrey;padding:10px "><span class="glyphicon glyphicon-time " style="font-size:12px; "><span style="color:dodgerblue;font-size:10px ">TOTAL TIME</span></span>
+                                <br>
+                                <span style="font-size:12px;padding-left:18px;color:lightgrey">{{(flight.duration
+                                            < '60') ? (flight.duration) + 'm' : (flight.duration%60==0) ? (flight.duration-flight.duration%60)/60 + 'h' : ((flight.duration-flight.duration%60)/60 + 'h' + ' ' + flight.duration%60 + 'm')}}</span></div>
+
+                        </div>
+                        <div class="col-md-2 col-sm-6 col-xs-6 ">
+                            <br>
+                            <span style="margin-top:50px "><button class="btn btn-warning " ng-click="joinTheGrp(flight,$index) " style="cursor:pointer;color:white ">JOIN NOW</button></span></div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>

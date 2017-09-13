@@ -1,0 +1,99 @@
+<div style="width: 100%;
+   height: 100%;">
+    <div class="container">
+
+        <div class="panel panel-info">
+            <div class="panel-heading" style="font-size:30px">Groups</div>
+            <div class="panel-body">
+                <div class="row list-group" id="userGroups">
+
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 list-group-item" ng-repeat="grp in indGrp" ng-click="chatPg(grp)" style="cursor:pointer">
+
+                        <div class="col-md-2 col-sm-4 col-xs-4">
+                            <span><i class="fa fa-plane" aria-hidden="true"></i></span>
+                            <span style="font-size:20px">{{grp.origincode}}</span>
+                            <br>
+                            <span style="font-size:10px">{{grp.origincity}}</span>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-4">
+                            <span style="font-size:10px">{{ (grp.duration<'60') ? 
+			    (grp.duration) + 'm' : (grp.duration%60==0) ?
+			     (grp.duration-grp.duration%60)/60 + 'h' :
+			    ((grp.duration-grp.duration%60)/60 + 'h' + ' ' + grp.duration%60 + 'm')}}</span>
+                            <br>
+                            <span class="fa fa-long-arrow-right" aria-hidden="true" style="font-size:45px"></span>
+
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-4">
+                            <span style="font-size:20px">{{grp.destinationcode}}</span>
+                            <br>
+                            <span style="font-size:10px">{{grp.destinationcity}}</span>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <span>{{"ArrivalTime:"}}</span>
+                            <span>{{grp.arrivaltime}}</span>
+                            <br>
+                            <span>{{"DepartureTime:"}}</span>
+                            <span>{{grp.departuretime}}</span>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="panel panel-info">
+            <div class="panel-heading" style="font-size:30px;color:black">Flights</div>
+            <div class="panel-body">
+                <div class="row list-group" id="tab">
+
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 list-group-item" ng-repeat="flight in flightsList">
+
+                        <div class="col-md-2 col-sm-4 col-xs-4">
+                            <span><i class="fa fa-plane" aria-hidden="true"></i></span>
+                            <span style="font-size:20px;color:black">{{flight.origin}}</span>
+                            <br>
+                            <span style="font-size:10px">{{originCity}}</span>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-4">
+                            <span style="font-size:10px">{{ (flight.duration<'60') ? 
+			    (flight.duration) + 'm' : (flight.duration%60==0) ?
+			     (flight.duration-flight.duration%60)/60 + 'h' :
+			    ((flight.duration-flight.duration%60)/60 + 'h' + ' ' + flight.duration%60 + 'm') }}</span>
+                            <br>
+                            <span class="fa fa-long-arrow-right" aria-hidden="true" style="font-size:45px"></span>
+
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-4">
+                            <span style="font-size:20px">{{flight.destination}}</span>
+                            <br>
+                            <span style="font-size:10px">{{destinationCity}}</span>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <span>{{"ArrivalTime:"}}</span>
+                            <span>{{flight.arrivaltime}}</span>
+                            <br>
+                            <span>{{"DepartureTime:"}}</span>
+                            <span>{{flight.departuretime}}</span>
+                        </div>
+                        <div class="col-md-2 col-sm-12 col-xs-12">
+                            <span style="font-size:20px">{{flight.saletotal}}</span>
+
+                            <button class="btn btn-lg btn-primary" ng-click="joinTheGrp(flight,$index)" style="cursor:pointer">Join</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
